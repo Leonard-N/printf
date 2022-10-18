@@ -46,6 +46,11 @@ int _printf(const char *format, ...)
 				printed_char += _print_string_number(s);
 				break;
 			default:
+				if (*pp != '%')
+				{
+					_putchar('%');
+					printed_char += 1;
+				}
 				_putchar(*pp);
 				printed_char += 1;
 				break;
