@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
+#define MAX 100
 
 /**
  * _printf -  a function to mimic the printf fro
@@ -8,7 +9,6 @@
  * ...: other inputs
  * return: nothing
  **/
-int printed_char = 0;
 int _printf(const char *format, ...)
 {
 	va_list arg_p;
@@ -16,6 +16,10 @@ int _printf(const char *format, ...)
 	char *s;
 	char c;
 	int int_val;
+	int printed_char = 0;
+	int arr[MAX];
+    int i = 0;
+    int j, r;
 
 	va_start(arg_p, format);
 	for (pp = format; *pp; pp++)
@@ -31,67 +35,54 @@ int _printf(const char *format, ...)
 		{
 			case 'd':
 				int_val = va_arg(arg_p, int);
-				print_digits(int_val);
+				while (int_val >= 1)
+				{
+					r = int_val % 10;
+
+					arr[i] = r;
+					i++;
+					int_val /= 10;
+				}
+				for (j = i - 1; j >= 0; j--)
+				{
+					_putchar(arr[j] + '0');
+					printed_char += 1;
+				}
 				break;
 			case 'i':
 				int_val = va_arg(arg_p, int);
-				print_digits(int_val);
+				while (int_val >= 1)
+				{
+					r = int_val % 10;
+
+					arr[i] = r;
+					i++;
+					int_val /= 10;
+				}
+				for (j = i - 1; j >= 0; j--)
+				{
+					_putchar(arr[j] + '0');
+					printed_char += 1;
+				}
 				break;
 			case 'c':
 				c = va_arg(arg_p, int);
 				_putchar(c);
+				printed_char += 1;
 				break;
 			case 's':
-				s = va_arg(arg_p, char *);
-				_puts_recursion(s);
+				for (s = va_arg(arg_p, char *); *s; s++)
+				{
+					_putchar(*s);
+					printed_char += 1;
+				}
 				break;
 			default:
 				_putchar(*pp);
+				printed_char += 1;
 				break;
 		}
 	}
 	va_end(arg_p);
 	return (printed_char);
-}
-
-/**
- * print_digits - use _putchar to print every digits in number
- * @n: number input
- * Return: void
- **/
-
-void print_digits(int n)
-{
-	if (n < 0)
-	{
-		_putchar('-');
-		printed_char++;
-		n = -n;
-	}
-
-	// Remove the last digit and recur
-	if (n / 10)
-		print_digits(n / 10);
-
-	// Print the last digit
-	_putchar(n % 10 + '0');
-	printed_char++;
-}
-
-/**
- * _puts_recursion - recursion function
- * @s: input string
- * Return: void
- */
-
-void _puts_recursion(char *s)
-{
-	if (*s == '\0')
-	{
-		return;
-	}
-
-	_putchar(*s);
-	printed_char++;
-	_puts_recursion(++s);
 }

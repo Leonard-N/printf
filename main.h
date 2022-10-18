@@ -3,7 +3,7 @@
 
 int _printf(const char *format, ...);
 int _putchar(char c);
-void print_digits(int n);
-void _puts_recursion(char *s);
+int print_digits(int n);
+int _puts_recursion(char *s);
 
 #endif /* MAIN_H */
