@@ -3,12 +3,14 @@
 #define MAX 100
 
 /**
- * _printf -  a function to mimic the printf fro
- *				the stdio.h library
+ * _printf -  a function to mimic the printf from the stdio.h library
+ *
  * @format: the first input
  * ...: other inputs
- * return: nothing
+ *
+ * return: number of characters
  **/
+
 int _printf(const char *format, ...)
 {
 	va_list arg_p;
