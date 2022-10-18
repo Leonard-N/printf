@@ -62,8 +62,6 @@ int _printf(const char *format, ...)
 
 void print_digits(int n)
 {
-  // If number is smaller than 0, put a - sign
-  // and change number to positive
 	if (n < 0)
 	{
 		_putchar('-');
