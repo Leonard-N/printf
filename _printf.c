@@ -17,7 +17,7 @@ int _printf(const char *format, ...)
 	const char *pp;
 	char *s, c;
 	int int_val, printed_char = 0;
-
+	unsigned int int_val_b;
 	va_start(arg_p, format);
 	for (pp = format; *pp; pp++)
 	{
@@ -36,6 +36,10 @@ int _printf(const char *format, ...)
 			case 'i':
 				int_val = va_arg(arg_p, int);
 				printed_char += print_digits(int_val);
+				break;
+			case 'b':
+				int_val_b = va_arg(arg_p, int);
+				printed_char += print_binary(int_val_b);
 				break;
 			case 'c':
 				c = va_arg(arg_p, int);
@@ -96,6 +100,40 @@ int print_digits(int n)
 	return (printed_char);
 }
 
+/**
+ * print_binary - use _putchar to print every digits in number
+ * @n: number input
+ * Return: number
+ */
+
+int print_binary(int n)
+{
+	int arr[MAX];
+	int i = 0;
+	int j, r;
+	int printed_char = 0;
+
+	if (n < 0)
+	{
+		_putchar('-');
+		printed_char++;
+		n = -n;
+	}
+	while (n >= 1)
+	{
+		r = n % 2;
+
+		arr[i] = r;
+		i++;
+		n /= 2;
+	}
+	for (j = i - 1; j >= 0; j--)
+	{
+		_putchar(arr[j] + '0');
+		printed_char += 1;
+	}
+	return (printed_char);
+}
 /**
  * _print_string_number - recursion function
  * @s: input string
