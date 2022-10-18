@@ -9,7 +9,7 @@
  * ...: other inputs
  *
  * return: number of characters
- **/
+ */
 
 int _printf(const char *format, ...)
 {
@@ -17,6 +17,7 @@ int _printf(const char *format, ...)
 	const char *pp;
 	char *s, c;
 	int int_val, printed_char = 0;
+
 	va_start(arg_p, format);
 	for (pp = format; *pp; pp++)
 	{
@@ -59,13 +60,15 @@ int _printf(const char *format, ...)
  * print_digits - use _putchar to print every digits in number
  * @n: number input
  * Return: void
- **/
+ */
+
 int print_digits(int n)
 {
 	int arr[MAX];
-    int i = 0;
-    int j, r;
+	int i = 0;
+	int j, r;
 	int printed_char = 0;
+
 	if (n < 0)
 	{
 		_putchar('-');
@@ -88,7 +91,6 @@ int print_digits(int n)
 	return (printed_char);
 }
 
-
 /**
  * _print_string_number - recursion function
  * @s: input string
@@ -98,6 +100,7 @@ int print_digits(int n)
 int _print_string_number(char *s)
 {
 	int printed_char = 0;
+
 	while (*s)
 	{
 		_putchar(*s);
