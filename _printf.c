@@ -9,7 +9,8 @@
  * return: nothing
  **/
 int printed_char = 0;
-int _printf(const char *format, ...) {
+int _printf(const char *format, ...)
+{
 	va_list arg_p;
 	const char *pp;
 	char *s;
@@ -59,10 +60,12 @@ int _printf(const char *format, ...) {
  * Return: void
  **/
 
-void print_digits(int n) {
+void print_digits(int n)
+{
   // If number is smaller than 0, put a - sign
   // and change number to positive
-	if (n < 0) {
+	if (n < 0)
+	{
 		_putchar('-');
 		printed_char++;
 		n = -n;
@@ -83,8 +86,10 @@ void print_digits(int n) {
  * Return: void
  */
 
-void _puts_recursion(char *s) {
-	if (*s == '\0') {
+void _puts_recursion(char *s)
+{
+	if (*s == '\0')
+	{
 		return;
 	}
 
